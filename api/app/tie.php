@@ -25,7 +25,7 @@ if (empty ( $fid )) {
 	$end = $rows * ($page + 1);
 	$ties = DB::fetch_all ( "select t.tid, t.subject, t.author, t.dateline from pre_forum_thread as t where t.fid=" . $fid . " limit " . $start . "," . $end );
 	
-	responseListData ( $ties );
+	responseListData ( $ties, $count );
 }
 
 ?>
