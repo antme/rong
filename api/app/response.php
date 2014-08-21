@@ -1,24 +1,29 @@
 <?php
 define ( 'CODE_PARAMETER_EMPTY', 1000 );
 define ( 'CODE_SUCCESS', 0 );
-
-header ( "Content-type:application/json" );
 function responseError($code, $msg) {
 	$result = array ();
 	$result ['rtn_code'] = $code;
 	$result ['rtn_msg'] = $msg;
+	header ( "Content-type:application/json" );
 	
 	echo json_encode ( $result );
 }
-function responseListData($data) {
-	responseSingleData ( $data );
+function responseListData($data, $total) {
+	responseSingleData ( $data, $total );
 }
-function responseSingleData($data) {
+function responseSingleData($data, $total) {
 	$result = array ();
 	$result ['rtn_code'] = CODE_SUCCESS;
 	$result ['rtn_msg'] = "success";
 	$result ['rtn_ext'] = "114.215.238.198|1.0";
 	$result ['data'] = $data;
+	
+	if (isset ( $total )) {
+		$result ['total'] = $total;
+	}
+	header ( "Content-type:application/json" );
+	
 	echo json_encode ( $result );
 }
 
