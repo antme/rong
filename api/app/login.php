@@ -18,7 +18,7 @@ else if (empty ( $password )) {
 	$loginResult = uc_user_login ( $userName, $password );	
 	
 	if($loginResult[0] < 0){
-		responseError ( USERNAME_OR_PASSWORD_ERROR, "密码不能为空" );
+		responseError ( USERNAME_OR_PASSWORD_ERROR, "用户名或者密码错误" );
 	}else{
 		$data = array();
 		$data['id'] = $loginResult[0];
