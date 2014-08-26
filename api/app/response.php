@@ -1,5 +1,7 @@
 <?php
 define ( 'CODE_PARAMETER_EMPTY', 1000 );
+
+define ( 'USERNAME_OR_PASSWORD_ERROR', 10001 );
 define ( 'CODE_SUCCESS', 0 );
 function responseError($code, $msg) {
 	$result = array ();
@@ -12,7 +14,7 @@ function responseError($code, $msg) {
 function responseListData($data, $total) {
 	responseSingleData ( $data, $total );
 }
-function responseSingleData($data, $total) {
+function responseSingleData($data, $total=null) {
 	$result = array ();
 	$result ['rtn_code'] = CODE_SUCCESS;
 	$result ['rtn_msg'] = "success";
