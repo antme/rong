@@ -2,6 +2,11 @@
 define ( 'CODE_PARAMETER_EMPTY', 1000 );
 
 define ( 'USERNAME_OR_PASSWORD_ERROR', 10001 );
+define ( 'REG_CODE_SEND_ERROR', 10002 );
+define ( 'REG_CODE_INVALID', 10003 );
+define ( 'USER_REG_EXISTS', 10004 );
+
+
 define ( 'CODE_SUCCESS', 0 );
 function responseError($code, $msg) {
 	$result = array ();

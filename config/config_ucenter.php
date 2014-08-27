@@ -16,6 +16,3 @@ define('UC_IP', '127.0.0.1');
 
 define('UC_APPID', '1');
 define('UC_PPP', '20');
-
-
-?>
