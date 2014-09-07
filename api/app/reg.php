@@ -10,14 +10,19 @@ $mobile = $_REQUEST ["mobile"];
 $regcode = $_REQUEST ["regcode"];
 $password = $_REQUEST ["password"];
 
+/*
+ * else if (empty ( $password )) {
+	responseError ( CODE_PARAMETER_EMPTY, "密码不能为空" );
+}
+ */
+
+$password = 'abc123_';
 $valid = true;
 if (empty ( $mobile )) {
 	responseError ( CODE_PARAMETER_EMPTY, "手机号不能为空" );
 } else if (empty ( $regcode )) {
 	responseError ( CODE_PARAMETER_EMPTY, "验证码不能为空" );
-} else if (empty ( $password )) {
-	responseError ( CODE_PARAMETER_EMPTY, "密码不能为空" );
-} else {
+}  else {
 	
 	$sql = "SELECT * FROM pre_common_member_profile where mobile='" . $mobile . "'";
 	$prifile = DB::fetch_all ( $sql );
@@ -35,7 +40,8 @@ if (empty ( $mobile )) {
 				responseError ( USER_REG_EXISTS, "此用户已经存在" );
 			} else {
 				$rdata = array (
-						'id' => $uid 
+						'id' => $uid,
+						'token' =>  $uid
 				);
 				
 				$user = array ();
