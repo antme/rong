@@ -35,9 +35,15 @@ if (empty ( $mobile )) {
 			$usql = "SELECT * from pre_common_member WHERE uid='" . $uid . "'";
 			$user = DB::fetch_first ( $usql );
 			
+			
+			$psql = "SELECT * from pre_common_member_profile WHERE uid='" . $uid . "'";
+			$puser = DB::fetch_first ( $psql );
+			
+			
 			$rdata = array (
 					'id' => $uid,
 					'username' => $user ['username'],
+					'nickname' => $puser ['field3'],
 					'token' => $uid 
 			);
 			responseSingleData ( $rdata );
