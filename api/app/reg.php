@@ -10,19 +10,20 @@ $mobile = $_REQUEST ["mobile"];
 $regcode = $_REQUEST ["regcode"];
 $password = $_REQUEST ["password"];
 
-/*
- * else if (empty ( $password )) {
-	responseError ( CODE_PARAMETER_EMPTY, "密码不能为空" );
+if (empty ( $password )) {
+	$password = $mobile;
 }
+
+/*
+ * else if (empty ( $password )) { responseError ( CODE_PARAMETER_EMPTY, "密码不能为空" ); }
  */
 
-$password = 'abc123_';
 $valid = true;
 if (empty ( $mobile )) {
 	responseError ( CODE_PARAMETER_EMPTY, "手机号不能为空" );
 } else if (empty ( $regcode )) {
 	responseError ( CODE_PARAMETER_EMPTY, "验证码不能为空" );
-}  else {
+} else {
 	
 	$sql = "SELECT * FROM pre_common_member_profile where mobile='" . $mobile . "'";
 	$prifile = DB::fetch_all ( $sql );
@@ -41,7 +42,7 @@ if (empty ( $mobile )) {
 			} else {
 				$rdata = array (
 						'id' => $uid,
-						'token' =>  $uid
+						'token' => $uid 
 				);
 				
 				$user = array ();
@@ -49,6 +50,20 @@ if (empty ( $mobile )) {
 				$user ['uid'] = $uid;
 				
 				DB::insert ( "common_member_profile", $user );
+				
+				uc_user_synlogin ( $uid );
+				
+				$user = array ();
+				$user ['email'] = $mobile . "@rong.com";
+				$user ['username'] = $mobile;
+				$user ['password'] = $password;
+				$user ['status'] = 0;
+				$user ['groupid'] = 10;
+				$user ['regdate'] = get_second ();
+				$user ['credits'] = 2;
+				$user ['timeoffset'] = "9999";
+				
+				DB::insert ( "common_member", $user );
 				
 				responseSingleData ( $rdata );
 			}

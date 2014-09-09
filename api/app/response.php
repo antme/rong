@@ -5,6 +5,9 @@ define ( 'USERNAME_OR_PASSWORD_ERROR', 10001 );
 define ( 'REG_CODE_SEND_ERROR', 10002 );
 define ( 'REG_CODE_INVALID', 10003 );
 define ( 'USER_REG_EXISTS', 10004 );
+define ( 'USER_NOT_EXISTS', 10005 );
+
+define ( 'USER_TOKEN_INVALID', 10006 );
 
 
 define ( 'CODE_SUCCESS', 0 );
@@ -19,7 +22,7 @@ function responseError($code, $msg) {
 function responseListData($data, $total) {
 	responseSingleData ( $data, $total );
 }
-function responseSingleData($data, $total=null) {
+function responseSingleData($data, $total = null) {
 	$result = array ();
 	$result ['rtn_code'] = CODE_SUCCESS;
 	$result ['rtn_msg'] = "success";
@@ -33,5 +36,21 @@ function responseSingleData($data, $total=null) {
 	
 	echo json_encode ( $result );
 }
+
+
+function get_millisecond() {
+	list ( $usec, $sec ) = explode ( " ", microtime () );
+	$msec = round ( $usec * 1000 );
+	return $msec;
+}
+
+
+
+function get_second() {
+	list ( $usec, $sec ) = explode ( " ", microtime () );
+	$msec = round ( $usec );
+	return $msec;
+}
+
 
 ?>
