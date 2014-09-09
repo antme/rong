@@ -19,7 +19,7 @@ if (empty ( $token )) {
 	if (empty ( $member )) {
 		responseError ( USER_TOKEN_INVALID, "此token不存在或者已经失效" );
 	} else {
-		$realname = $_REQUEST ["realname"];
+		$nickname = $_REQUEST ["nickname"];
 		$gender = $_REQUEST ["gender"];
 		$occupation = $_REQUEST ["occupation"];
 		
@@ -29,9 +29,9 @@ if (empty ( $token )) {
 			}
 		}
 		
-		if ($realname || $gender || $occupation) {
+		if ($nickname || $gender || $occupation) {
 			$data = array (
-					"realname" => $realname,
+					"field3" => $nickname,
 					"gender" => $gender,
 					"occupation" => $occupation 
 			);
