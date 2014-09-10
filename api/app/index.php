@@ -42,6 +42,10 @@ if (empty ( $token )) {
 		$infodata = array (
 				"residedist" => $prifile ['residedist'],
 				"floor" => $prifile ['field1'],
+				"username" => $member ['username'],
+				"nickname" => $prifile ['field3'],
+				"gender" => $prifile ['gender'],
+				"occupation" => $prifile ['occupation'],
 				"room" => $prifile ['field2'] 
 		);
 		
