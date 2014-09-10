@@ -93,6 +93,8 @@ function reg($mobile, $regCode) {
 				'token' => $uid,
 				'action' => 'reg' 
 		);
+		
+		
 		responseSingleData ( $rdata );
 	}
 }
