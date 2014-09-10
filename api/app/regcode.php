@@ -9,9 +9,7 @@ if (empty ( $mobile )) {
 	responseError ( CODE_PARAMETER_EMPTY, "手机号不能为空" );
 } else {
 	
-	DB::delete ( "rong_reg_code", array (
-			'mobile' => $mobile 
-	) );
+
 	
 	$regcode = rand ( 1000, 9999 );
 	$data = array ();
@@ -53,6 +51,10 @@ if (empty ( $mobile )) {
 		xml_parser_free ( $p );
 		$code = $vals [1] ['value'];
 		if ($code == '2') {
+			DB::delete ( "rong_reg_code", array (
+			'mobile' => $mobile
+			) );
+			
 			DB::insert ( "rong_reg_code", $data );
 			$result_data = array (
 					'msg' => '验证码已经发送' 
