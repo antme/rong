@@ -54,7 +54,7 @@ if (empty ( $token )) {
 		);
 		
 		$rdata = array (
-				"forums" => $data,
+				"finfo" => $data,
 				"uinfo" => $infodata,
 				"resideinfo" => $resideinfo 
 		);
