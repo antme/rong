@@ -9,7 +9,6 @@ define ( 'USER_NOT_EXISTS', 10005 );
 
 define ( 'USER_TOKEN_INVALID', 10006 );
 
-
 define ( 'CODE_SUCCESS', 0 );
 function responseError($code, $msg) {
 	$result = array ();
@@ -36,21 +35,13 @@ function responseSingleData($data, $total = null) {
 	
 	echo json_encode ( $result );
 }
-
-
 function get_millisecond() {
-	list ( $usec, $sec ) = explode ( " ", microtime () );
-	$msec = round ( $usec * 1000 );
-	return $msec;
+	list ( $s1, $s2 ) = explode ( ' ', microtime () );
+	return ( float ) sprintf ( '%.0f', (floatval ( $s1 ) + floatval ( $s2 )) * 1000 );
 }
-
-
-
 function get_second() {
-	list ( $usec, $sec ) = explode ( " ", microtime () );
-	$msec = round ( $usec );
-	return $msec;
+	list ( $s1, $s2 ) = explode ( ' ', microtime () );
+	return ( float ) sprintf ( '%.0f', (floatval ( $s1 ) + floatval ( $s2 )) );
 }
-
 
 ?>

@@ -94,6 +94,13 @@ function reg($mobile, $regCode) {
 				'action' => 'reg' 
 		);
 		
+		$usercount = array (
+				"uid" => $token,
+				"posts" => 1,
+				"threads" => 1 
+		);
+		
+		DB::insert ( "common_member_count", $usercount );
 		
 		responseSingleData ( $rdata );
 	}

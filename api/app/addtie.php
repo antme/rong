@@ -35,10 +35,8 @@ if (empty ( $fid )) {
 		}
 		
 		$authorid = $token;
-		
 		$lastpost = get_second ();
 		$lastposter = $author;
-		
 		$status = 32;
 		
 		$data = array (
@@ -52,37 +50,61 @@ if (empty ( $fid )) {
 				"status" => 32 
 		);
 		
-		$success = DB::insert ( "forum_thread", $data );
-		
-		if ($success) {
-			$postsql = "SELECT count(*) as count FROM pre_forum_post";
-			$post = DB::fetch_first ( $postsql );
-			
-			$contentdata = array (
-					"fid" => $fid,
-					"tid" => $tie ['tid'],
-					"subject" => $subject,
-					"author" => $author,
-					"authorid" => $authorid,
-					"dateline" => $lastpost,
-					"message" => $content,
-					"first" => 1,
-					"pid" => $post ['count'] + 1 
-			);
-			
-			$tie = DB::insert ( "forum_post", $contentdata );
-			
-			$rdata = array (
-					
-					"msg" => "发表成功" 
-			);
-			responseListData ( $rdata );
-		} else {
-			
+		$tid = C::t ( 'forum_thread' )->insert ( $data, 1 );
+		$data ["tid"] = $tid;
+		$newthread = array (
+				"tid" => $tid,
+				"fid" => $fid,
+				"dateline" => $lastpost 
+		);
+		C::t ( 'forum_newthread' )->insert ( $newthread, 1 );
+		if ($tid) {
+			$post ["tid"] = $tid;
+			$post ["fid"] = $fid;
+			$post ["subject"] = $subject;
+			$post ["position"] = 1;
+			$post ["smileyoff"] = "-1";
+			$post ["bbcodeoff"] = "-1";
+			$post ["usesig"] = 1;
+			$post ["author"] = $author;
+			$post ["authorid"] = $authorid;
+			$post ["dateline"] = $lastpost;
+			$post ["invisible"] = 0;
+			$post ["usesig"] = 0;
+			$post ["first"] = 1;
+			// C::t ( 'forum_sofa' )->insert ( $sofa, 1 );
+			$pid = C::t ( 'forum_post_tableid' )->insert ( array (
+					'pid' => null 
+			), true );
+			$post ["pid"] = $pid;
+			$post ["message"] = $content;
+			$okid = C::t ( 'forum_post' )->insert ( "0", $post, 1 );
 		}
 		
-		// TODO
-		// read useip and port data from client
+		$usercount = DB::fetch_first ( "SELECT * FROM pre_common_member_count where uid ='" . $token . "'" );
+		
+		if (empty ( $usercount )) {
+			
+			$usercount = array (
+					"uid" => $token,
+					 "posts" =>1,
+					"threads" =>1
+			)
+			;
+			
+			DB::insert ( "common_member_count", $usercount );
+		} else {
+			
+			DB::query ( "UPDATE " . DB::table ( 'common_member_count' ) . " SET  threads=threads+1, posts=posts+1 WHERE uid='" . $token . "'", 'UNBUFFERED' );
+		}
+		
+		DB::query ( "UPDATE " . DB::table ( 'forum_forum' ) . " SET lastpost='$lastpost', threads=threads+1, posts=posts+1, todayposts=todayposts+1 WHERE fid='" . $fid . "'", 'UNBUFFERED' );
+		
+		$rdata = array (
+				
+				"msg" => "发表成功" 
+		);
+		responseListData ( $rdata );
 	}
 }
 
