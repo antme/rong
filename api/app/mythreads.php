@@ -6,7 +6,7 @@ C::app ()->init ();
 $token = $_REQUEST ["token"];
 
 $rows = 10;
-$page = 0;
+$page = 1;
 
 if (isset ( $_REQUEST ["rows"] )) {
 	$rows = $_REQUEST ["rows"];
@@ -15,6 +15,12 @@ if (isset ( $_REQUEST ["rows"] )) {
 if (isset ( $_REQUEST ["page"] )) {
 	$page = $_REQUEST ["page"];
 }
+
+if($page == 0){
+	$page = 1;
+}
+
+
 if (empty ( $token )) {
 	responseError ( CODE_PARAMETER_EMPTY, "token不能为空" );
 } else {
@@ -27,8 +33,8 @@ if (empty ( $token )) {
 	} else {
 		$countResut = DB::fetch_all ( "select count(*) as count from pre_forum_thread where authorid=" . $token );
 		$count = $countResut [0] ['count'];
-		$start = $rows * $page;
-		$end = $rows * ($page + 1);
+		$start = $rows * ($page-1);
+		$end = $rows * ($page);
 		$ties = DB::fetch_all ( "select t.tid, t.subject, t.author, t.dateline from pre_forum_thread as t where t.authorid=" . $token . " limit " . $start . "," . $end );
 		
 		foreach ( $ties as &$tie ) {
