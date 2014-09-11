@@ -34,6 +34,8 @@ if (empty ( $fid )) {
 			$author = $member ['username'];
 		}
 		
+		$subject = urldecode($subject);
+		$content = urldecode($content);
 		$authorid = $token;
 		$lastpost = get_second ();
 		$lastposter = $author;
