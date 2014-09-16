@@ -90,7 +90,7 @@ if (empty ( $tid )) {
 			
 			$rdata = array (
 					
-					"msg" => "发表成功" 
+					"msg" => "回复成功" 
 			);
 			responseListData ( $rdata );
 		}
