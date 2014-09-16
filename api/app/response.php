@@ -8,6 +8,8 @@ define ( 'USER_REG_EXISTS', 10004 );
 define ( 'USER_NOT_EXISTS', 10005 );
 
 define ( 'USER_TOKEN_INVALID', 10006 );
+define ( 'THREAD_NOT_EXISTS', 10007 );
+
 
 define ( 'CODE_SUCCESS', 0 );
 function responseError($code, $msg) {
