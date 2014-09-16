@@ -42,7 +42,7 @@ if (empty ( $tid )) {
 		} else {
 			$start = $rows * ($page - 1);
 			$end = $rows * ($page);
-			$sql = "SELECT authorid, author, message, dateline FROM pre_forum_post where tid='" . $tid . "' and position <> 1 " . " limit " . $start . "," . $end;
+			$sql = "SELECT authorid, author, message as content, dateline FROM pre_forum_post where tid='" . $tid . "' and position <> 1 " . " limit " . $start . "," . $end;
 			$posts = DB::fetch_all ( $sql );
 			
 			$countResut = DB::fetch_all ( "select count(*) as count FROM pre_forum_post where tid='" . $tid . "' and position <> 1");
