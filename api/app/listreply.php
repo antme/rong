@@ -48,10 +48,10 @@ if (empty ( $tid )) {
 			$countResut = DB::fetch_all ( "select count(*) as count FROM pre_forum_post where tid='" . $tid . "' and position <> 1");
 			$count = $countResut [0] ['count'];
 			
-			foreach ( $posts as &$post ) {
+// 			foreach ( $posts as &$post ) {
 				
-				$post ['dateline'] = date ( "Y-m-d H:i:s", $post ['dateline'] );
-			}
+// 				$post ['dateline'] = date ( "Y-m-d H:i:s", $post ['dateline'] );
+// 			}
 			
 			responseListData ( $posts, $count );
 		}
