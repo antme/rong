@@ -8,6 +8,10 @@ $token = $_REQUEST ["token"];
 $subject = "";
 $content = $_REQUEST ["content"];
 
+if (empty ( $content )) {
+	$content = $_REQUEST ["replycontent"];
+}
+
 if (empty ( $tid )) {
 	responseError ( CODE_PARAMETER_EMPTY, "帖子ID不能为空" );
 } else if (empty ( $token )) {

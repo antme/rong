@@ -32,7 +32,7 @@ if (empty ( $token )) {
 	} else {
 		$start = $rows * ($page - 1);
 		$end = $rows * ($page);
-		$sql = "SELECT p.tid, t.subject, p.message as content, p.dateline FROM pre_forum_post as p left join pre_forum_thread as t on p.tid=t.tid where p.authorid='" . $token . "' and position <> 1 " . " limit " . $start . "," . $end;
+		$sql = "SELECT p.tid, t.subject, p.message as replycontent, p.dateline FROM pre_forum_post as p left join pre_forum_thread as t on p.tid=t.tid where p.authorid='" . $token . "' and position <> 1 " . " limit " . $start . "," . $end;
 		$posts = DB::fetch_all ( $sql );
 		
 		$countResut = DB::fetch_all ( "select count(*) as count FROM pre_forum_post where authorid='" . $token . "' and position <> 1" );
