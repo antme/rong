@@ -3,7 +3,10 @@ name：Yeei!Dream 1.0
 Powered by Yeei.cn
 更多配色下载：http://www.yeei.cn/forum-54-1.html
 ----------------------- */
-
+.head_logo img{
+	width:100px;
+	height:50px;
+}
 body{background:url({IMGDIR}/img/body_bg.gif) repeat-x 0 130px;}
 #diy-tg { position: absolute;top:0px; right: 15px; height:24px;_z-index:303}
 #diy-tg_menu{ margin-top:-3px}
