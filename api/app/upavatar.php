@@ -21,7 +21,7 @@ if (empty ( $token )) {
 	// http://localhost/uc_server/avatar.php?uid=20&size=middle
 	
 	$data = array (
-			"avatar_url" => "http://114.215.238.198/uc_server/avatar.php?uid=20&size=middle" 
+			"avatar_url" => "http://114.215.238.198/uc_server/avatar.php?uid=" . $token . "&size=middle" 
 	);
 	
 	responseSingleData ( $data );
