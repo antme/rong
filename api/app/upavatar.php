@@ -40,18 +40,18 @@ function uploadAvatar($uid, $home) {
 	@unlink ( $tmpPath );
 	
 	// ?????
-	if (@copy ( $_FILES ['avartar_file'] ['tmp_name'], $tmpPath )) {
+	if (@copy ( $_FILES ['avatar_file'] ['tmp_name'], $tmpPath )) {
 	}
 	
-	if (@copy ( $_FILES ['avartar_file'] ['tmp_name'], $bigavatarfile )) {
+	if (@copy ( $_FILES ['avatar_file'] ['tmp_name'], $bigavatarfile )) {
 	}
-	if (@copy ( $_FILES ['avartar_file'] ['tmp_name'], $middleavatarfile )) {
-	}
-	
-	if (@copy ( $_FILES ['avartar_file'] ['tmp_name'], $smallavatarfile )) {
+	if (@copy ( $_FILES ['avatar_file'] ['tmp_name'], $middleavatarfile )) {
 	}
 	
-	@unlink ( $_FILES ['avartar_file'] ['tmp_name'] );
+	if (@copy ( $_FILES ['avatar_file'] ['tmp_name'], $smallavatarfile )) {
+	}
+	
+	@unlink ( $_FILES ['avatar_file'] ['tmp_name'] );
 	// list ( $width, $height, $type, $attr ) = getimagesize ( $tmpPath );
 	
 	return $tmpPath;
