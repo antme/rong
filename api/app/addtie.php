@@ -112,7 +112,7 @@ if (empty ( $fid )) {
 				DB::insert ( "forum_attachment_".$tableid, $attachfile );
 				
 				// C::t ( 'forum_attachment_9' )->insert ( $attachfile, 1 );
-				$content = "[attach]" . $aid . "[/attach]" . $content;
+				$content = "[attach]" . $aid . "[/attach]<br></br>" . $content;
 				DB::update ( "forum_thread", array (
 						"attachment" => 2 
 				), array (
