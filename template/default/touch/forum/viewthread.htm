@@ -4,7 +4,7 @@
 <!--{hook/viewthread_top_mobile}-->
 <!-- main postlist start -->
 <div class="postlist">
-	<h2 style="margin-left:50px;">
+	<h2 style="text-align: center;">
         
 			$_G[forum_thread][subject]
             
@@ -17,20 +17,12 @@
 	<!--{hook/viewthread_posttop_mobile $postcount}-->
    <div class="plc cl" id="pid$post[pid]">
        <div class="display pi" href="#replybtn_$post[pid]">
-		   <ul class="authi">
+		   <ul class="authi" style="text-align: center;">
 		  
 				<li class="grey">
-					<em>
-						<!--{if isset($post[isstick])}-->
-							<img src ="{IMGDIR}/settop.png" title="{lang replystick}" class="vm" /> {lang from} {$post[number]}{$postnostick}
-						<!--{elseif $post[number] == -1}-->
-							{lang recommend_post}
-						<!--{else}-->
-							<!--{if !empty($postno[$post[number]])}-->$postno[$post[number]]<!--{else}-->{$post[number]}{$postno[0]}<!--{/if}-->
-						<!--{/if}-->
-					</em><b>
+					<b>
 					<!--{if $post['authorid'] && $post['username'] && !$post['anonymous']}-->
-						$post[author]</b>
+						作者： $post[author]</b>
 
 					<!--{else}-->
 						<!--{if !$post['authorid']}-->
@@ -44,12 +36,13 @@
 				</li>
 				<li class="grey rela">
 					
-					$post[dateline]
+					发表时间: $post[dateline]
 					
 				</li>
             </ul>
            
-			<div class="message">
+       
+			<div class="message" style="height:100%;margin-top:15px; border-top: 1px solid grey; padding-top:15px;">
                 	<!--{if $post['warned']}-->
                         <span class="grey quote">{lang warn_get}</span>
                     <!--{/if}-->
@@ -115,30 +108,13 @@
 
 					<!--{/if}-->
 			</div>
-			<!--{if $_G['setting']['mobile']['mobilesimpletype'] == 0}-->
-			<!--{if $post['attachment']}-->
-               <div class="grey quote">
-               {lang attachment}: <em><!--{if $_G['uid']}-->{lang attach_nopermission}<!--{else}-->{lang attach_nopermission_login}<!--{/if}--></em>
-               </div>
-            <!--{elseif $post['imagelist'] || $post['attachlist']}-->
-               <!--{if $post['imagelist']}-->
-				<!--{if count($post['imagelist']) == 1}-->
-				<ul class="img_one">{echo showattach($post, 1)}</ul>
-				<!--{else}-->
-				<ul class="img_list cl vm">{echo showattach($post, 1)}</ul>
-				<!--{/if}-->
-				<!--{/if}-->
-                <!--{if $post['attachlist']}-->
-				<ul>{echo showattach($post)}</ul>
-				<!--{/if}-->
-			<!--{/if}-->
-			<!--{/if}-->
+			
 			
        </div>
    </div>
    <!--{hook/viewthread_postbottom_mobile $postcount}-->
    <!--{eval $postcount++;}-->
-    <!--{/if}-->
+   <!--{/if}-->
    <!--{/loop}-->
 
 
