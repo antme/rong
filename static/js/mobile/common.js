@@ -1,5 +1,5 @@
 var supporttouch = "ontouchend" in document;
-!supporttouch && (window.location.href = 'forum.php?mobile=1');
+//!supporttouch && (window.location.href = 'forum.php?mobile=1');
 
 var platform = navigator.platform;
 var ua = navigator.userAgent;
