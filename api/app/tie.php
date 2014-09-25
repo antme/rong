@@ -33,7 +33,7 @@ if (empty ( $fid )) {
 		$countResut = DB::fetch_all ( "select count(*) as count FROM pre_forum_post where tid='" . $tie['tid'] . "' and position <> 1");
 		$count = $countResut [0] ['count'];
 		$tie['totalReply'] = $count;
-		$tie['url'] = 'http://114.215.238.198/forum.php?mod=viewthread&tid=' . $tie['tid'];
+		$tie['url'] = 'http://114.215.238.198/forum.php?mod=viewthread&tid=' . $tie['tid'] .'&random='.get_second();
 	}
 	
 	responseListData ( $ties, $count );
