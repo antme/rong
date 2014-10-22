@@ -27,7 +27,7 @@ if (empty ( $token )) {
 				"gender" => $prifile ['gender'],
 				"occupation" => $prifile ['occupation'],
 				"room" => $prifile ['field2'],
-				"avatar_url" => "http://114.215.238.198/uc_server/avatar.php?uid=" . $token . "&size=middle"
+				"avatar_url" => "http://'. SERVER_ADDRESS. '/uc_server/avatar.php?uid=" . $token . "&size=middle"
 		);
 		
 		responseSingleData ( $infodata );

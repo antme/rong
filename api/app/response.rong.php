@@ -1,6 +1,6 @@
 <?php
 
-define('SERVER_ADDRESS', '114.215.238.198');
+define('SERVER_ADDRESS', '114.215.238.198:8080');
 
 define ( 'CODE_PARAMETER_EMPTY', 1000 );
 
@@ -30,7 +30,7 @@ function responseSingleData($data, $total = null) {
 	$result = array ();
 	$result ['rtn_code'] = CODE_SUCCESS;
 	$result ['rtn_msg'] = "success";
-	$result ['rtn_ext'] = SERVER_ADDRESS."|1.0";
+	$result ['rtn_ext'] = "114.215.238.198|1.0";
 	$result ['data'] = $data;
 	
 	if (isset ( $total )) {

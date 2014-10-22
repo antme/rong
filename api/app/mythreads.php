@@ -38,7 +38,7 @@ if (empty ( $token )) {
 		$ties = DB::fetch_all ( "select t.tid, t.subject, t.author, t.dateline from pre_forum_thread as t where t.authorid=" . $token . " limit " . $start . "," . $end );
 		
 		foreach ( $ties as &$tie ) {
-			$tie ['url'] = 'http://114.215.238.198/forum.php?mod=viewthread&tid=' . $tie ['tid'];
+			$tie ['url'] = 'http://'. SERVER_ADDRESS. '/forum.php?mod=viewthread&tid=' . $tie ['tid'];
 		}
 		
 		responseListData ( $ties, $count );

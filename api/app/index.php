@@ -24,7 +24,7 @@ if (empty ( $token )) {
 			foreach ( $forums as &$forum ) {
 				
 				if (! empty ( $forum ['icon'] )) {
-					$forum ['icon'] = "http://114.215.238.198/data/attachment/common/" . $forum ['icon'];
+					$forum ['icon'] = "http://". SERVER_ADDRESS. "/data/attachment/common/" . $forum ['icon'];
 				}
 			}
 			
