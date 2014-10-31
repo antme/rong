@@ -3,6 +3,9 @@ name：Yeei!Dream 1.0
 Powered by Yeei.cn
 更多配色下载：http://www.yeei.cn/forum-54-1.html
 ----------------------- */
+.fl_icn img{
+	width:32px;
+}
 .head_logo img{
 	width:100px;
 	height:50px;
