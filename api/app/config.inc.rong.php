@@ -9,7 +9,7 @@ define('UC_DBNAME', 'rong');
 define('UC_DBCHARSET', 'utf8');
 define('UC_DBTABLEPRE', '`rong`.pre_ucenter_');
 define('UC_KEY', 'I5L3cdwfM383sdfdN3mdn1M3S6r2685c599659Lbq9bckco5Zfd0heEbt1j6e5zb');
-define('UC_API', 'http://localhost:8088/uc_server');
+define('UC_API', 'http://114.215.238.198:8088/uc_server');
 define('UC_CHARSET', 'utf-8');
 define('UC_IP', '127.0.0.1');
 
